@@ -36,13 +36,13 @@ function search() {
       $("#giphy-area").append(response.data[i].rating);
       $("#giphy-area").append(response.data[i].url);
     };
-  }); createTopicBtn;
+  }); createTopicBtn();
 };
 
 function createTopicBtn() {
   var topics = [];
   var searchText = $("#search").val();
-  topics = "<button>" + searchText + "</button>";
+  topics = "<button class='btn-primary'>" + searchText + "</button>";
   $("#topics").append(topics);
 };
 
@@ -51,5 +51,5 @@ function createTopicBtn() {
 //=======================
 //MAIN PROCESS
 //=======================
-//When the Submit button is clicked the search function is ran
+//When the Submit button is clicked the search function is called
 $("#search-btn").on("click", search);
