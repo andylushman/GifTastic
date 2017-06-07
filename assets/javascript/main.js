@@ -4,8 +4,7 @@
 
 var giphy = {
   topics: [],
-  
-}
+};
 
 //1. User enters text into input and that value is used to create a button
 //1.1 topic is added to an array of strings.
@@ -36,3 +35,19 @@ function topics(){
 //=======================
 //MAIN PROCESS
 //=======================
+
+$("#search-btn").on("click", () => {
+  var searchValue = $("#search").val();
+  var queryURL= "http://api.giphy.com/v1/gifs/search?q="+ searchValue +"&api_key=dc6zaTOxFJmzC";
+  $.ajax({
+    url: queryURL,
+    method: 'GET'
+  }).done((response) => {
+    console.log(response);
+    for(i = 0; i < response.data.length; i++){
+      console.log(response.data[i].rating);
+      $("#giphy-area").append(response.data[i].rating);
+      $("#giphy-area").append(response.data[i].url);
+    };
+  });
+})//End onClick
