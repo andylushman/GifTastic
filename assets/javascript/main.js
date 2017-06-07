@@ -2,9 +2,6 @@
 //GLOBAL VARIABLES
 //=======================
 
-var giphy = {
-  topics: [],
-};
 
 //1. User enters text into input and that value is used to create a button
 //1.1 topic is added to an array of strings.
@@ -26,17 +23,7 @@ var giphy = {
 //FUNCTIONS
 //=======================
 
-function topics(){
-
-
-};
-
-
-//=======================
-//MAIN PROCESS
-//=======================
-
-$("#search-btn").on("click", () => {
+function search() {
   var searchValue = $("#search").val();
   var queryURL= "http://api.giphy.com/v1/gifs/search?q="+ searchValue +"&api_key=dc6zaTOxFJmzC";
   $.ajax({
@@ -49,5 +36,20 @@ $("#search-btn").on("click", () => {
       $("#giphy-area").append(response.data[i].rating);
       $("#giphy-area").append(response.data[i].url);
     };
-  });
-})//End onClick
+  }); createTopicBtn;
+};
+
+function createTopicBtn() {
+  var topics = [];
+  var searchText = $("#search").val();
+  topics = "<button>" + searchText + "</button>";
+  $("#topics").append(topics);
+};
+
+
+
+//=======================
+//MAIN PROCESS
+//=======================
+//When the Submit button is clicked the search function is ran
+$("#search-btn").on("click", search);
