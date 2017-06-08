@@ -36,20 +36,20 @@ function search() {
     for(i = 0; i < response.data.length; i++){
       //Add raiting and img to html
       $("#giphy-area").append("<div class= 'gif-div'>Raiting: " +response.data[i].rating+ '<br>'+ "<img src='"+response.data[i].images.downsized_still.url+"'class= 'gif-img'></div>");
-    }; $("#search").val("")
+    };
   });
-  //create button function
-  createTopicBtn();
+  //Empty the countries array & create new button
+  giphy.countries= [];
+  //Add new country to the array
+  giphy.countries.push(giphy.searchValue);
+  //Clear #search
+  $("#search").val("")
+  //Run init()
+  init();
 };
 
 function createTopicBtn() {
-  var searchText = $("#search").val().trim();
-  //Empty the countries array
-  giphy.countries= [];
-  //Add new country to the array
-  giphy.countries.push(searchText);
-  //Run init()
-  init();
+
 };
 
 function pressTopicBtn () {
