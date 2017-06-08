@@ -17,6 +17,7 @@ var giphy = {
 function init() {
   for(i=0; i < giphy.countries.length; i++){
     console.log(giphy.countries[i]);
+    $("#giphy-area").append("<button class='btn-primary topic-btn'>" + giphy.countries[i] + "</button>")
   };
 };
 
@@ -38,13 +39,12 @@ function search() {
   });
   //create button function
   createTopicBtn();
+  init();
 };
 
 function createTopicBtn() {
-  var topics = [];
   var searchText = $("#search").val().trim();
-  topics = "<button class='btn-primary topic-btn'>" + searchText + "</button>";
-  $("#topics").append(topics);
+  giphy.countries.push(searchText);
 };
 
 // function pressTopicBtn () {
