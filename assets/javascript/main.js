@@ -48,10 +48,6 @@ function search() {
   init();
 };
 
-function createTopicBtn() {
-
-};
-
 function pressTopicBtn () {
   $("#giphy-area").html("");
   var topicBtnValue = $(this).text();
@@ -78,5 +74,5 @@ init();
 
 //When the Submit button is clicked the search function is called
 $("#search-btn").on("click", search);
-
+//When the Country buttons are clicked, the presstopicBtn function is called
 $(".topic-btn").on("click", pressTopicBtn);
