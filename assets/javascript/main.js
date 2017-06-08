@@ -34,7 +34,7 @@ function search() {
     for(i = 0; i < response.data.length; i++){
       console.log(response.data[i].rating);
       $("#giphy-area").append("<div class= 'gif-div'>Raiting: " +response.data[i].rating+ '<br>'+ "<img src='"+response.data[i].images.downsized.url+"'class= 'gif-img'></div>");
-    };
+    }; $("#search").val("")
   });
   createTopicBtn();
 };
