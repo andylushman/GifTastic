@@ -24,19 +24,18 @@
 //=======================
 
 function search() {
-  // // var searchValue = $("#search").val().trim();
-  // // var queryURL= "http://api.giphy.com/v1/gifs/search?q="+ searchValue +"&api_key=dc6zaTOxFJmzC";
-  // // $.ajax({
-  // //   url: queryURL,
-  // //   method: 'GET'
-  // // }).done((response) => {
-  // //   console.log(response);
-  // //   for(i = 0; i < response.data.length; i++){
-  // //     console.log(response.data[i].rating);
-  // //     $("#giphy-area").append(response.data[i].rating);
-  // //     $("#giphy-area").append(response.data[i].url);
-  // //   };
-  // });
+  var searchValue = $("#search").val().trim();
+  var queryURL= "http://api.giphy.com/v1/gifs/search?q="+ searchValue +"&api_key=dc6zaTOxFJmzC";
+  $.ajax({
+    url: queryURL,
+    method: 'GET'
+  }).done((response) => {
+    console.log(response);
+    for(i = 0; i < response.data.length; i++){
+      console.log(response.data[i].rating);
+      $("#giphy-area").append("<div class= 'gif-div'>Raiting: " +response.data[i].rating+ '<br>'+ "<img src='"+response.data[i].images.downsized.url+"'class= 'gif-img'></div>");
+    };
+  });
   createTopicBtn();
 };
 
@@ -47,21 +46,21 @@ function createTopicBtn() {
   $("#topics").append(topics);
 };
 
-function pressTopicBtn () {
-  var topicBtnValue = $(this).text();
-  var queryURL= "http://api.giphy.com/v1/gifs/search?q="+ topicBtnValue +"&api_key=dc6zaTOxFJmzC";
-  $.ajax({
-    url: queryURL,
-    method: 'GET'
-  }).done((response) => {
-    console.log(response);
-    for(i = 0; i < response.data.length; i++){
-      console.log(response.data[i].rating);
-      $("#giphy-area").append(response.data[i].rating);
-      $("#giphy-area").append(response.data[i].url);
-    };
-  });
-};
+// function pressTopicBtn () {
+//   var topicBtnValue = $(this).text();
+//   var queryURL= "http://api.giphy.com/v1/gifs/search?q="+ topicBtnValue +"&api_key=dc6zaTOxFJmzC";
+//   $.ajax({
+//     url: queryURL,
+//     method: 'GET'
+//   }).done((response) => {
+//     console.log(response);
+//     for(i = 0; i < response.data.length; i++){
+//       console.log(response.data[i].rating);
+//       $("#giphy-area").append(response.data[i].rating);
+//       $("#giphy-area").append(response.data[i].url);
+//     };
+//   });
+// };
 
 
 
@@ -71,4 +70,4 @@ function pressTopicBtn () {
 //When the Submit button is clicked the search function is called
 $("#search-btn").on("click", search);
 
-$(".topic-btn").on("click", pressTopicBtn);
+//$(".topic-btn").on("click", pressTopicBtn);

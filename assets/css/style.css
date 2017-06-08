@@ -1,0 +1,10 @@
+.gif-div {
+  float: left;
+  margin-left: .5em;
+  margin-bottom: 3em;
+}
+
+.gif-img {
+  height: 100px;
+  width: 100px;
+}
