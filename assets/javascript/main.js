@@ -2,19 +2,10 @@
 //GLOBAL VARIABLES
 //=======================
 
-
-//1. User enters text into input and that value is used to create a button
-//1.1 topic is added to an array of strings.
-//2.The button is appended to the #topics div
-//2.2 A loop that apends a button for each string in the array
-//3. When User clicks on button, the value is used to conduct a search trough the API
-//4. The results of the search are displayed in the #giphy-area
-//4.1 Under every gif, display its rating (PG, G, so on).
-//5.When the user clicks on a button, the page should grab 10 static, non-animated gif images from the GIPHY API and place them on the page.
-//5.1 When the user clicks one of the still GIPHY images, the gif should animate. If the user clicks the gif again, it should stop playing.
-//6. A reset button should be added to clear the results
-
-
+var giphy = {
+  searchValue: "",
+  countries: ["Canada", "United States of America", "Switzerland", "China"]
+}
 
 
 
@@ -23,19 +14,26 @@
 //FUNCTIONS
 //=======================
 
+function init() {
+  for(i=0; i < giphy.countries.length; i++){
+    console.log(giphy.countries[i]);
+  };
+};
+
 function search() {
-  var searchValue = $("#search").val().trim();
-  var queryURL= "http://api.giphy.com/v1/gifs/search?q="+ searchValue +"&api_key=dc6zaTOxFJmzC";
+  $("#giphy-area").html("");
+  giphy.searchValue = $("#search").val().trim();
+  var queryURL= "http://api.giphy.com/v1/gifs/search?q="+ giphy.searchValue +"&api_key=dc6zaTOxFJmzC&limit=10";
   $.ajax({
     url: queryURL,
-    method: 'GET'
+    method: 'GET',
   }).done((response) => {
     console.log(response);
     for(i = 0; i < response.data.length; i++){
       //console.log for debugging
       console.log(response.data[i].rating);
       //Add raiting and img to html
-      $("#giphy-area").append("<div class= 'gif-div'>Raiting: " +response.data[i].rating+ '<br>'+ "<img src='"+response.data[i].images.downsized.url+"'class= 'gif-img'></div>");
+      $("#giphy-area").append("<div class= 'gif-div'>Raiting: " +response.data[i].rating+ '<br>'+ "<img src='"+response.data[i].images.downsized_still.url+"'class= 'gif-img'></div>");
     }; $("#search").val("")
   });
   //create button function
@@ -70,6 +68,8 @@ function createTopicBtn() {
 //=======================
 //MAIN PROCESS
 //=======================
+init();
+
 //When the Submit button is clicked the search function is called
 $("#search-btn").on("click", search);
 
