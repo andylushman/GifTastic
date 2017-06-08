@@ -4,10 +4,9 @@
 
 var giphy = {
   searchValue: "",
-  countries: ["Canada", "United States of America", "Switzerland", "China", ]
+  countries: [
+            "Canada", "United States of America", "Switzerland", "China", "France", "Germany", "Ireland", "Scotland", "Spain", "Portugal", "Netherlands", "Norway", "Denmark", "Hungary", "Austria", "Greece", "Italy", "Japan", "Hong Kong", "Thailand", "Malaysia", "Singapore", "Laos", "Burma", "Philippines", "Indonesia", "Vatican City", "Dominican Republic", "Costa Rica" ]
 }
-
-
 
 
 //=======================
