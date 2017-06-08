@@ -24,8 +24,32 @@
 //=======================
 
 function search() {
-  var searchValue = $("#search").val();
-  var queryURL= "http://api.giphy.com/v1/gifs/search?q="+ searchValue +"&api_key=dc6zaTOxFJmzC";
+  // // var searchValue = $("#search").val().trim();
+  // // var queryURL= "http://api.giphy.com/v1/gifs/search?q="+ searchValue +"&api_key=dc6zaTOxFJmzC";
+  // // $.ajax({
+  // //   url: queryURL,
+  // //   method: 'GET'
+  // // }).done((response) => {
+  // //   console.log(response);
+  // //   for(i = 0; i < response.data.length; i++){
+  // //     console.log(response.data[i].rating);
+  // //     $("#giphy-area").append(response.data[i].rating);
+  // //     $("#giphy-area").append(response.data[i].url);
+  // //   };
+  // });
+  createTopicBtn();
+};
+
+function createTopicBtn() {
+  var topics = [];
+  var searchText = $("#search").val().trim();
+  topics = "<button class='btn-primary topic-btn'>" + searchText + "</button>";
+  $("#topics").append(topics);
+};
+
+function pressTopicBtn () {
+  var topicBtnValue = $(this).text();
+  var queryURL= "http://api.giphy.com/v1/gifs/search?q="+ topicBtnValue +"&api_key=dc6zaTOxFJmzC";
   $.ajax({
     url: queryURL,
     method: 'GET'
@@ -36,14 +60,7 @@ function search() {
       $("#giphy-area").append(response.data[i].rating);
       $("#giphy-area").append(response.data[i].url);
     };
-  }); createTopicBtn();
-};
-
-function createTopicBtn() {
-  var topics = [];
-  var searchText = $("#search").val();
-  topics = "<button class='btn-primary'>" + searchText + "</button>";
-  $("#topics").append(topics);
+  });
 };
 
 
@@ -53,3 +70,5 @@ function createTopicBtn() {
 //=======================
 //When the Submit button is clicked the search function is called
 $("#search-btn").on("click", search);
+
+$(".topic-btn").on("click", pressTopicBtn);
