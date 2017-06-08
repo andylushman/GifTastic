@@ -32,10 +32,13 @@ function search() {
   }).done((response) => {
     console.log(response);
     for(i = 0; i < response.data.length; i++){
+      //console.log for debugging
       console.log(response.data[i].rating);
+      //Add raiting and img to html
       $("#giphy-area").append("<div class= 'gif-div'>Raiting: " +response.data[i].rating+ '<br>'+ "<img src='"+response.data[i].images.downsized.url+"'class= 'gif-img'></div>");
     }; $("#search").val("")
   });
+  //create button function
   createTopicBtn();
 };
 
