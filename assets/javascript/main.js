@@ -35,7 +35,7 @@ function search() {
     console.log(response);
     for(i = 0; i < response.data.length; i++){
       //Add raiting and img to html
-      $("#giphy-area").append("<div class= 'gif-div'>Raiting: " +response.data[i].rating+ '<br>'+ "<img src='"+response.data[i].images.downsized_still.url+"'class= 'gif-img'></div>");
+      $("#giphy-area").append("<div class= 'gif-div'>Rating: " +response.data[i].rating+ '<br>'+ "<img src='"+response.data[i].images.downsized_still.url+"'class= 'gif-img'></div>");
     };
   });
   //Empty the countries array & create new button
@@ -59,7 +59,7 @@ function pressTopicBtn () {
     console.log(response);
     for(i = 0; i < response.data.length; i++){
       //Add raiting and img to html
-      $("#giphy-area").append("<div class= 'gif-div'>Raiting: " +response.data[i].rating+ '<br>'+ "<img src='"+response.data[i].images.downsized_still.url+"'class= 'gif-img'></div>");
+      $("#giphy-area").append("<div class= 'gif-div'>Rating: " +response.data[i].rating+ '<br>'+ "<img src='"+response.data[i].images.downsized_still.url+"'class= 'gif-img'></div>");
     };
   });
 };
@@ -75,4 +75,4 @@ init();
 //When the Submit button is clicked the search function is called
 $("#search-btn").on("click", search);
 //When the Country buttons are clicked, the presstopicBtn function is called
-$(".topic-btn").on("click", pressTopicBtn);
+$(document).on("click", ".topic-btn", pressTopicBtn);
