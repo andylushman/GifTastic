@@ -25,7 +25,7 @@ function search() {
   $("#giphy-area").html("");
   giphy.searchValue = $("#search").val().trim();
   //Set queryURL for AJAX Request
-  var queryURL= "http://api.giphy.com/v1/gifs/search?q="+ giphy.searchValue +"&api_key=dc6zaTOxFJmzC&limit=10";
+  var queryURL= "https://api.giphy.com/v1/gifs/search?q="+ giphy.searchValue +"&api_key=dc6zaTOxFJmzC&limit=10";
 
   //AJAX Request
   $.ajax({
@@ -51,7 +51,7 @@ function search() {
 function pressTopicBtn () {
   $("#giphy-area").html("");
   var topicBtnValue = $(this).text();
-  var queryURL= "http://api.giphy.com/v1/gifs/search?q="+ topicBtnValue +"&api_key=dc6zaTOxFJmzC&limit=10";
+  var queryURL= "https://api.giphy.com/v1/gifs/search?q="+ topicBtnValue +"&api_key=dc6zaTOxFJmzC&limit=10";
   $.ajax({
     url: queryURL,
     method: 'GET'
