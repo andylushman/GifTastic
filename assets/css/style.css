@@ -20,7 +20,7 @@
   margin-bottom: 3em;
 }
 
-.gif-img {
+.gif-img, .gif {
   height: 150px;
   width: 150px;
 }
@@ -31,6 +31,11 @@
 
 #topics {
   margin-bottom: 4em;
+}
+
+#instruct {
+  margin-bottom: 3em;
+  font-weight: bold;
 }
 
 /***********************
